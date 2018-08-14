@@ -46,19 +46,19 @@ class AuthServiceProvider extends ServiceProvider
         $cai = getHeaders();
    
 
-        foreach($cai as $x => $x_value) {
+        /*foreach($cai as $x => $x_value) {
             echo "Key=" . $x . ", Value=" . $x_value;
             echo "<br>";
-        }
+        }*/
 
         $cuid = $cai['Api-Token'];
         echo($cuid);
         echo('siguio');
-
+        $this->app['auth']->viaRequest('api', function ($request) {
         if ($cuid) {
             return User::where('api_token', $cuid)->first();
-        }
-
+                 }
+         });
        /* dd($request);
 
         $this->app['auth']->viaRequest('api', function ($request) {

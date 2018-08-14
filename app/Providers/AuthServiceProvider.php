@@ -47,12 +47,12 @@ class AuthServiceProvider extends ServiceProvider
             return $headers;    
             }
             $cai = getHeaders();
-            $cuid = $cai['Api-Token'];
-            echo($cai['Api-Token']);
-            /*foreach($cai as $x => $x_value) {
+            //$cuid = $cai['Api-Token'];
+
+            foreach($cai as $x => $x_value) {
                 echo "Key=" . $x . ", Value=" . $x_value;
                 echo "<br>";
-            }*/
+            }
 
             if ($cuid) {
                 return User::where('api_token', $cuid)->first();

@@ -25,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        global $token;
         // Here you may define how you wish users to be authenticated for your Lumen
         // application. The callback which receives the incoming request instance
         // should return either a User instance or null. You're free to obtain
@@ -45,20 +46,21 @@ class AuthServiceProvider extends ServiceProvider
         }
         $cai = getHeaders();
    
+        $token = false;
+       foreach($cai as $x => $x_value) {
+            if ( $x == "Api-Token"){
+                $token = $x_value;
+            }
+        };
 
-        /*foreach($cai as $x => $x_value) {
-            echo "Key=" . $x . ", Value=" . $x_value;
-            echo "<br>";
-        }*/
-
-        $cuid = $cai['Api-Token'];
-        echo($cuid);
-        echo('siguio');
         $this->app['auth']->viaRequest('api', function ($request) {
-        if ($cuid) {
-            return User::where('api_token', $cuid)->first();
-                 }
-         });
+            global $token;
+         if ($token != false) {
+             return User::where('api_token', $token)->first();
+            }
+          });
+       
+
        /* dd($request);
 
         $this->app['auth']->viaRequest('api', function ($request) {

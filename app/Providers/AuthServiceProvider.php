@@ -48,7 +48,7 @@ class AuthServiceProvider extends ServiceProvider
             }
             $cai = getHeaders();
             $cuid = $cai['Api-Token'];
-            echo($cai);
+            echo($cai['Api-Token']);
             /*foreach($cai as $x => $x_value) {
                 echo "Key=" . $x . ", Value=" . $x_value;
                 echo "<br>";

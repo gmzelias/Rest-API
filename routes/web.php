@@ -25,7 +25,7 @@ $router->get('/key', function() {
      return str_random(32);
 });
 
-//$router->group(['middleware' =>['auth']], function() use ($router){
+$router->group(['middleware' =>['auth']], function() use ($router){
     
     $router->get('/users', ['uses' => 'UserController@ListUsers']);
 
@@ -34,4 +34,4 @@ $router->get('/key', function() {
     $router->put('/alter', ['uses' => 'UserController@AlterUser']);
 
     $router->delete('/delete', ['uses' => 'UserController@DeleteUser']);
-//});
+});

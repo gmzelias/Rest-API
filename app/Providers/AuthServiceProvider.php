@@ -52,6 +52,8 @@ class AuthServiceProvider extends ServiceProvider
         }
 
         $cuid = $cai['Api-Token'];
+        echo($cuid);
+        echo('siguio');
 
         if ($cuid) {
             return User::where('api_token', $cuid)->first();

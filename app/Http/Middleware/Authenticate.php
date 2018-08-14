@@ -35,7 +35,6 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        echo('Token');
         if ($this->auth->guard($guard)->guest()) {
             return response('Unauthorized, log in first.', 401);
         }

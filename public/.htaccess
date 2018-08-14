@@ -20,6 +20,6 @@
     RewriteRule ^ index.php [L]
 
     RewriteEngine On
-RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+RewriteCond %{HTTP:api_token} ^(.*)
+RewriteRule .* - [e=HTTP_api_token:%1]
 </IfModule>

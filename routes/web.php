@@ -29,8 +29,6 @@ $router->group(['middleware' =>['auth']], function() use ($router){
     
     $router->get('/users', ['uses' => 'UserController@ListUsers']);
 
-
-
     $router->post('/select', ['uses' => 'UserController@SelectUser']);
 
     $router->put('/alter', ['uses' => 'UserController@AlterUser']);
